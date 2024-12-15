@@ -28,7 +28,7 @@ const app = express();
 // Enable CORS
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://sa-bookreviewapp-nine.vercel.app/"],
+    origin: ["https://sa-bookreviewapp-nine.vercel.app"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // Support cookies
   })
