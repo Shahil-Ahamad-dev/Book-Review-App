@@ -24,9 +24,7 @@
     "react-hook-form": "^7.54.1",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.28.0",
-    "zod": "^3.24.1"
-  },
-  "devDependencies": {
+    "zod": "^3.24.1",
     "@eslint/js": "^9.17.0",
     "@types/babel__core": "^7.20.5",
     "@types/react": "^18.3.16",
