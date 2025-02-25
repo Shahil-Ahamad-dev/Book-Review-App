@@ -1,24 +1,50 @@
-<h1>Preview of my Book-Review-App</h1>
+Workflow
+Branch
+Product
+Provider
+Sub-Agent
+Super-Agent
+Counseller
+Owner
+Intake  
+Stage
+Note
 
-<!-- SA -->
-<h1>Login Page</h1>
+```prisma
+model Application {
+id Int @id @default(autoincrement())
+applicationId String @default("")
+provider Provider @relation(fields: [providerId], references: [id])
+providerId Int
+product Product @relation(fields: [productId], references: [id])
+productId Int
+intake String
+workflow Workflow @relation(fields: [workflowId], references: [id])
+workflowId Int
+client Client @relation(fields: [clientId], references: [id])
+clientId Int
+superAgent Agent? @relation("ApplicationSuperAgent", fields: [superagentId], references: [id])
+superagentId Int?
+subAgent Agent? @relation("ApplicationSubAgent", fields: [subagentId], references: [id])
+subagentId Int?
+owner User @relation("OwnerApplication", fields: [ownerId], references: [id])
+ownerId Int
+owners ApplicationOwners[]
+counsellor User @relation("CounsellorApplication", fields: [counsellorId], references: [id])
+counsellorId Int
 
-![loginpage](https://github.com/user-attachments/assets/fe365e4f-0624-402b-a5fc-c5f483fbfb0a)
+branch Branch? @relation(fields: [branchId], references: [id])
+branchId Int? @default(1)
 
+applicationStatus Process? @relation(fields: [applicationStatusId], references: [id])
+applicationStatusId Int?
 
-<h1>Register Page</h1>
+Note Note? @relation(fields:[noteId], references:[id])
+noteId Int?
 
-![registerpage](https://github.com/user-attachments/assets/6a19bdd1-8cf9-4f06-bed9-d7eafd8c1706)
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
 
-<h1>Home Page</h1>
-
-![homepage](https://github.com/user-attachments/assets/57a39e83-d221-46c6-b7d0-bc343c63c98b)
-
-<h1>Dash_Board</h1>
-
-![dashboard](https://github.com/user-attachments/assets/a236dc33-d8f1-4fcd-a474-397d610f556c)
-
-<h1>Review_Page</h1>
-
-![reviewpage](https://github.com/user-attachments/assets/422341a7-4683-441f-9d30-f864f654e50a)
-
+@@map("applications")
+}
+```
